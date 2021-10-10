@@ -1,25 +1,85 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef, useEffect } from 'react';
+import { Slider, Cart, BoughtAmount, Header } from './components/Index';
 
-function App() {
+import {
+  firstImage,
+  firstImageThumbnail,
+  secondImage,
+  secondImageThumbnail,
+  thirdImage,
+  thirdImageThumbnail,
+  forthImage,
+  forthImageThumbnail
+} from './assets';
+
+const App = () => {
+  const [payments, setPayments] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const cartDropdownRef = useRef();
+  const cartRef = useRef();
+  const previewRef = useRef();
+
+  useEffect(() => {
+    if (payments.length > 0)
+      setTotalItems(payments.reduce((acc, item) => item.amount + acc, 0));
+  }, [payments]);
+
+  useEffect(() => {
+    const onBodyClick = e => {
+      if (cartDropdownRef.current.contains(e.target)) return;
+      if (cartRef.current && cartRef.current.contains(e.target)) return;
+      else setOpen(false);
+    };
+
+    document.body.addEventListener('click', onBodyClick, {
+      capture: true
+    });
+
+    return () => {
+      document.body.removeEventListener('click', onBodyClick, {
+        capture: true
+      });
+    };
+  }, []);
+
+  const delItem = i =>
+    setPayments(payments.filter((item, index) => i !== index));
+
+  const thumbnail = [
+    firstImageThumbnail,
+    secondImageThumbnail,
+    thirdImageThumbnail,
+    forthImageThumbnail
+  ];
+
+  const preview = [firstImage, secondImage, thirdImage, forthImage];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header
+        setOpen={setOpen}
+        reference={cartDropdownRef}
+        open={open}
+        totalItems={totalItems}
+      />
+
+      {open ? (
+        <Cart payments={payments} delItem={delItem} reference={cartRef} />
+      ) : (
+        ''
+      )}
+      <BoughtAmount
+        setPayments={setPayments}
+        payments={payments}
+        title="whe"
+        image={firstImageThumbnail}
+        price={125}
+      />
+      <Slider thumbnail={thumbnail} preview={preview} reference={previewRef} />
     </div>
   );
-}
+};
 
 export default App;
