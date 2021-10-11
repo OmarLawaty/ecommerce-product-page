@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Slider, Cart, BoughtAmount, Header } from './components/Index';
+import './App.scss';
 
 import {
   firstImage,
@@ -21,9 +22,8 @@ const App = () => {
   const cartRef = useRef();
   const previewRef = useRef();
 
-  useEffect(() => {
-    if (payments.length > 0)
-      setTotalItems(payments.reduce((acc, item) => item.amount + acc, 0));
+  useLayoutEffect(() => {
+    setTotalItems(payments.reduce((acc, { amount }) => amount + acc, 0));
   }, [payments]);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const App = () => {
   const preview = [firstImage, secondImage, thirdImage, forthImage];
 
   return (
-    <div>
+    <div className="app">
       <Header
         setOpen={setOpen}
         reference={cartDropdownRef}
@@ -65,7 +65,7 @@ const App = () => {
         totalItems={totalItems}
       />
 
-      {open ? (
+      {/* {open ? (
         <Cart payments={payments} delItem={delItem} reference={cartRef} />
       ) : (
         ''
@@ -77,7 +77,7 @@ const App = () => {
         image={firstImageThumbnail}
         price={125}
       />
-      <Slider thumbnail={thumbnail} preview={preview} reference={previewRef} />
+      <Slider thumbnail={thumbnail} preview={preview} reference={previewRef} /> */}
     </div>
   );
 };
