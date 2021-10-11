@@ -35,6 +35,15 @@ body {
   font: 400 16px 'Kumbh Sans', sans-serif;
   position: relative;
 
+  &.no-slider {
+    overflow: hidden;
+  }
+
+  .dimmer {
+    width: 100vw;
+    height: 100vh;
+  }
+
   #root {
     margin: 0 auto;
     width: 77%;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.scss';
 
 import { cart, avatar, siteLogo } from '../../assets';
@@ -6,8 +6,15 @@ import { cart, avatar, siteLogo } from '../../assets';
 const Header = ({ setOpen, reference, open, totalItems }) => {
   const [navToggeled, setNavToggeled] = useState(false);
 
+  useEffect(() => {
+    navToggeled === true
+      ? document.body.classList.add('no-slider')
+      : document.body.classList.remove('no-slider');
+  }, [navToggeled]);
+
   return (
     <header className={navToggeled ? 'opened' : ''}>
+      <div className="dimmer"></div>
       <div className="left-side">
         <div className="humburger" onClick={() => setNavToggeled(!navToggeled)}>
           <hr />

@@ -17,6 +17,15 @@ header {
     opacity: 20%;
   }
 
+  .dimmer {
+    transition: 300ms left;
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    background-color: hsla(0, 0%, 0%, 0.75);
+    z-index: 3;
+  }
+
   .logo,
   li,
   .cart,
@@ -183,7 +192,38 @@ header {
       }
 
       nav {
-        display: none;
+        transition: 600ms left;
+        padding: 92px 0 0 25px;
+        top: 0;
+        left: -100vw;
+        height: 100vh;
+        width: 67%;
+        align-items: start;
+        position: absolute;
+        background-color: #fff;
+        z-index: 4;
+
+        ul {
+          flex-direction: column;
+          gap: 26px;
+          justify-content: start;
+          align-items: flex-start;
+
+          li {
+            font: inherit;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #000;
+
+            &::after {
+              content: unset;
+            }
+
+            &:hover::after {
+              content: unset;
+            }
+          }
+        }
       }
     }
 
@@ -204,6 +244,10 @@ header {
 
     &.opened {
       position: relative;
+
+      .dimmer {
+        left: 0;
+      }
 
       .left-side {
         gap: 16px;
@@ -232,6 +276,10 @@ header {
               margin-top: 4px;
             }
           }
+        }
+
+        nav {
+          left: 0;
         }
       }
     }
