@@ -13,15 +13,14 @@ header {
     left: 0;
     width: 100%;
     position: absolute;
-    border-bottom: 1px solid hsl(219, 9%, 45%);
-    opacity: 20%;
+    border-bottom: 1px solid hsla(219, 9%, 45%, 20%);
   }
 
   .dimmer {
-    transition: 300ms left;
+    transition: 300ms left ease-in-out;
     position: absolute;
     top: 0;
-    left: -100vw;
+    left: -125vw;
     background-color: hsla(0, 0%, 0%, 0.75);
     z-index: 3;
   }
@@ -107,7 +106,8 @@ header {
         transition: 200ms filter;
         filter: brightness(100%);
 
-        &:hover {
+        &:hover,
+        &.opened {
           filter: brightness(0);
         }
       }
@@ -119,6 +119,7 @@ header {
         top: -18%;
         left: 43%;
         background-color: hsl(26, 100%, 55%);
+        color: #fff;
         width: 86%;
         text-align: center;
         border-radius: 50px;

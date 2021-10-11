@@ -65,7 +65,7 @@ const App = () => {
         totalItems={totalItems}
       />
 
-      {/* {open ? (
+      {open ? (
         <Cart payments={payments} delItem={delItem} reference={cartRef} />
       ) : (
         ''
@@ -73,11 +73,11 @@ const App = () => {
       <BoughtAmount
         setPayments={setPayments}
         payments={payments}
-        title="whe"
+        title="Fall Limited Edition Sneakers"
         image={firstImageThumbnail}
         price={125}
       />
-      <Slider thumbnail={thumbnail} preview={preview} reference={previewRef} /> */}
+      {/* <Slider thumbnail={thumbnail} preview={preview} reference={previewRef} /> */}
     </div>
   );
 };

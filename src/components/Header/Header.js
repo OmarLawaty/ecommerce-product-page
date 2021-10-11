@@ -14,7 +14,10 @@ const Header = ({ setOpen, reference, open, totalItems }) => {
 
   return (
     <header className={navToggeled ? 'opened' : ''}>
-      <div className="dimmer"></div>
+      <div
+        className="dimmer"
+        onClick={() => setNavToggeled(!navToggeled)}
+      ></div>
       <div className="left-side">
         <div className="humburger" onClick={() => setNavToggeled(!navToggeled)}>
           <hr />
@@ -37,7 +40,7 @@ const Header = ({ setOpen, reference, open, totalItems }) => {
       <div className="right-side">
         <div className="cart" onClick={() => setOpen(!open)} ref={reference}>
           <span>{totalItems ? totalItems : ''}</span>
-          <img src={cart} alt="cart icon" />
+          <img src={cart} alt="cart icon" className={open ? 'opened' : ''} />
         </div>
         <div className="avatar">
           <img src={avatar} alt="profile" />

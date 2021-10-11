@@ -5,10 +5,6 @@ const BoughtAmount = ({ payments, setPayments, title, image, price }) => {
   const [amount, setAmount] = useState(1);
 
   const checkForRepeatation = () => {
-    // let index = payments.indexOf({
-    //   title
-    // });
-
     let index = payments.reduce(
       (acc, item, i) => (item.title === title ? (acc = i) : acc),
       undefined
