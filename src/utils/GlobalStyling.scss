@@ -55,7 +55,7 @@ body {
 
     main {
       display: flex;
-      margin: 120px 0;
+      margin: 120px 0 70px;
       justify-content: space-between;
       gap: 50px;
     }
@@ -79,6 +79,7 @@ body {
       main {
         flex-direction: column;
         margin: 0;
+        gap: 0;
       }
     }
   }

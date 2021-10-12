@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import './Slider.scss';
 
-const Slider = ({ thumbnail, preview, reference }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [popUp, setPopUp] = useState(false);
+import './Slider.scss';
+import { noSlider } from '../../utils/helpers';
+import { thumbnail, preview } from '../../utils/productData';
+
+const Slider = ({ reference }) => {
+  const [activeIndex, setActiveIndex] = useState(0),
+    [popUp, setPopUp] = useState(false);
+
   useEffect(() => {
-    popUp
-      ? document.body.classList.add('no-slider')
-      : document.body.classList.remove('no-slider');
+    noSlider(popUp);
   }, [popUp]);
 
   const thumbnails = () =>
     thumbnail.map((item, i) => (
       <div
         key={i}
-        className={`image-nav ${activeIndex === i ? 'active-image' : ''}`}
+        className={`image-nav ${activeIndex === i && 'active-image'}`}
         onClick={() => setActiveIndex(i)}
       >
         <img src={item} alt="" />
       </div>
     ));
 
-  return (
-    <div className="slider">
-      {popUp ? (
+  const modal = () => {
+    if (popUp)
+      return (
         <div className="popup">
           <div className="dimmer" onClick={() => setPopUp(false)}></div>
+
           <div className="content">
             <div className="navigate">
               <svg
@@ -61,14 +64,7 @@ const Slider = ({ thumbnail, preview, reference }) => {
               </svg>
 
               <div className="preview">
-                <img
-                  src={preview[activeIndex]}
-                  alt=""
-                  ref={reference}
-                  onClick={() => {
-                    setPopUp(true);
-                  }}
-                />
+                <img src={preview[activeIndex]} alt="" ref={reference} />
               </div>
 
               <svg
@@ -93,9 +89,13 @@ const Slider = ({ thumbnail, preview, reference }) => {
             <div className="images-nav">{thumbnails()}</div>
           </div>
         </div>
-      ) : (
-        ''
-      )}
+      );
+  };
+
+  return (
+    <div className="slider">
+      {modal()}
+
       <div className="navigate">
         <svg
           width="25"
@@ -118,7 +118,7 @@ const Slider = ({ thumbnail, preview, reference }) => {
             src={preview[activeIndex]}
             alt=""
             ref={reference}
-            onClick={() => (window.innerWidth > 1000 ? setPopUp(true) : '')}
+            onClick={() => window.innerWidth > 1000 && setPopUp(true)}
           />
         </div>
 

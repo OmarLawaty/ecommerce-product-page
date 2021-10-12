@@ -1,15 +1,13 @@
 import React from 'react';
 
 import './Cart.scss';
-import { toDollar } from '../../utils/helpers/helpers';
-
+import { toDollar, delItemFromArr } from '../../utils/helpers';
 import { del } from '../../assets';
 
-const Cart = ({ setPayments, payments, reference }) => (
-  <div ref={reference} className="cart-menu">
-    <h1 className="title">Cart</h1>
-    {payments.length > 0 ? (
-      payments.map(({ title, image, price, amount }, i) => (
+const Cart = ({ setPayments, payments, reference }) => {
+  const hasProduct = () => {
+    if (payments.length > 0)
+      return payments.map(({ title, image, price, amount }, i) => (
         <div key={i} className="item">
           <div className="info">
             <div className="cart-item-thumbnail">
@@ -21,21 +19,26 @@ const Cart = ({ setPayments, payments, reference }) => (
               <span className="total-price">{toDollar(price * amount)}</span>
             </p>
           </div>
+
           <div
             className="delete"
-            onClick={() =>
-              setPayments(payments.filter((item, index) => i !== index))
-            }
+            onClick={() => setPayments(delItemFromArr(payments, i))}
           >
             <img src={del} alt="delete icon" />
           </div>
         </div>
-      ))
-    ) : (
-      <p className="empty-cart">Your cart is empty</p>
-    )}
-    {payments.length > 0 ? <button className="checkout">Checkout</button> : ''}
-  </div>
-);
+      ));
+    else return <p className="empty-cart">Your cart is empty</p>;
+  };
+
+  return (
+    <div ref={reference} className="cart-menu">
+      <h1 className="title">Cart</h1>
+
+      {hasProduct()}
+      {payments.length > 0 && <button className="checkout">Checkout</button>}
+    </div>
+  );
+};
 
 export default Cart;

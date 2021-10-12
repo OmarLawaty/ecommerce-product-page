@@ -37,7 +37,9 @@ const BoughtAmount = ({ payments, setPayments, title, image, price }) => {
         >
           <img src={minus} alt="minus icon" />
         </button>
+
         <span className="amount">{amount}</span>
+
         <button className="increase" onClick={() => setAmount(amount + 1)}>
           <img src={plus} alt="plus icon" />
         </button>
@@ -47,6 +49,7 @@ const BoughtAmount = ({ payments, setPayments, title, image, price }) => {
         <div className="cart">
           <img src={cart} alt="cart icon" />
         </div>
+
         <span> Add to cart</span>
       </button>
     </div>
