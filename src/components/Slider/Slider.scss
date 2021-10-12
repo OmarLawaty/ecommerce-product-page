@@ -129,14 +129,14 @@
 
       &:hover {
         img {
-          opacity: 60%;
+          filter: opacity(60%);
         }
       }
 
       &.active-image {
         img {
           border: 2px solid hsl(26, 100%, 55%);
-          opacity: 40%;
+          filter: opacity(40%);
         }
       }
     }
