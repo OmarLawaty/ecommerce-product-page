@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+
 import { Slider, Cart, BoughtAmount, Header } from './components/Index';
 import './App.scss';
+import { toDollar } from './utils/helpers/helpers';
 
 import {
   firstImage,
@@ -44,8 +46,17 @@ const App = () => {
     };
   }, []);
 
-  const delItem = i =>
-    setPayments(payments.filter((item, index) => i !== index));
+  const products = [
+    {
+      comapny: 'sneaker company',
+      name: 'fall limited edition sneakers',
+      description: `These low-profile sneakers are your perfect casual wear companion. Featuring a 
+      durable rubber outer sole, they’ll withstand everything the weather can offer.`,
+      price: 250,
+      discount: 50,
+      priceAfterDiscount: 125
+    }
+  ];
 
   const thumbnail = [
     firstImageThumbnail,
@@ -66,23 +77,43 @@ const App = () => {
       />
 
       <main>
-        {open ? (
-          <Cart payments={payments} delItem={delItem} reference={cartRef} />
-        ) : (
-          ''
+        {open && (
+          <Cart
+            payments={payments}
+            setPayments={setPayments}
+            reference={cartRef}
+          />
         )}
         <Slider
           thumbnail={thumbnail}
           preview={preview}
           reference={previewRef}
         />
-        <BoughtAmount
-          setPayments={setPayments}
-          payments={payments}
-          title="Fall Limited Edition Sneakers"
-          image={firstImageThumbnail}
-          price={125}
-        />
+        <div className="product-info">
+          <p className="product-company">{products[0].comapny}</p>
+          <h1 className="product-name">{products[0].name}</h1>
+          <p className="product-description">{products[0].description}</p>
+          <p className="product-price">
+            <span className="discount-info">
+              <span className="price-after-discount">
+                {toDollar(products[0].priceAfterDiscount)}
+              </span>
+              <span className="discount">{products[0].discount}%</span>
+            </span>
+            <span className="price">{toDollar(products[0].price)}</span>
+          </p>
+          <BoughtAmount
+            setPayments={setPayments}
+            payments={payments}
+            title={products[0].name}
+            image={firstImageThumbnail}
+            price={
+              products[0].priceAfterDiscount
+                ? products[0].priceAfterDiscount
+                : products[0].price
+            }
+          />
+        </div>
       </main>
     </div>
   );

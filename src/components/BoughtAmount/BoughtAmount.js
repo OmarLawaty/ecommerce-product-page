@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import { minus, plus, cart } from '../../assets/index';
+import './BoughtAmount.scss';
 
 const BoughtAmount = ({ payments, setPayments, title, image, price }) => {
   const [amount, setAmount] = useState(1);
@@ -27,7 +29,7 @@ const BoughtAmount = ({ payments, setPayments, title, image, price }) => {
   };
 
   return (
-    <div>
+    <div className="product-amount">
       <div className="amount-to-buy">
         <button
           className="decrease"

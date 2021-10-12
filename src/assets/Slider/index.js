@@ -6,6 +6,3 @@ export { default as thirdImage } from './thirdImage.jpg';
 export { default as thirdImageThumbnail } from './thirdImageThumbnail.jpg';
 export { default as forthImage } from './forthImage.jpg';
 export { default as forthImageThumbnail } from './forthImageThumbnail.jpg';
-export { default as closeIcon } from './icon-close.svg';
-export { default as nextIcon } from './icon-next.svg';
-export { default as previousIcon } from './icon-previous.svg';

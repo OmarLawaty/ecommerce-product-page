@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Slider.scss';
 
-import { closeIcon, nextIcon, previousIcon } from '../../assets';
-
 const Slider = ({ thumbnail, preview, reference }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [popUp, setPopUp] = useState(false);
