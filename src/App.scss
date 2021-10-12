@@ -47,6 +47,12 @@ body {
   #root {
     margin: 0 auto;
     width: 77%;
+
+    main {
+      display: flex;
+      margin: 120px 0;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -57,6 +63,17 @@ body {
     #root {
       margin: 0;
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  body {
+    #root {
+      main {
+        flex-direction: column;
+        margin: 0;
+      }
     }
   }
 }

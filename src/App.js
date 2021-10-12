@@ -65,19 +65,25 @@ const App = () => {
         totalItems={totalItems}
       />
 
-      {open ? (
-        <Cart payments={payments} delItem={delItem} reference={cartRef} />
-      ) : (
-        ''
-      )}
-      <BoughtAmount
-        setPayments={setPayments}
-        payments={payments}
-        title="Fall Limited Edition Sneakers"
-        image={firstImageThumbnail}
-        price={125}
-      />
-      {/* <Slider thumbnail={thumbnail} preview={preview} reference={previewRef} /> */}
+      <main>
+        {open ? (
+          <Cart payments={payments} delItem={delItem} reference={cartRef} />
+        ) : (
+          ''
+        )}
+        <Slider
+          thumbnail={thumbnail}
+          preview={preview}
+          reference={previewRef}
+        />
+        <BoughtAmount
+          setPayments={setPayments}
+          payments={payments}
+          title="Fall Limited Edition Sneakers"
+          image={firstImageThumbnail}
+          price={125}
+        />
+      </main>
     </div>
   );
 };

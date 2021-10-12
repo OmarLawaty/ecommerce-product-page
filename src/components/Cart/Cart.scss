@@ -69,6 +69,7 @@
   }
 
   .checkout {
+    transition: 200ms background-color;
     margin: 21px auto 31px;
     width: 86.7%;
     height: 57px;
@@ -79,6 +80,10 @@
     font-weight: 700;
     color: #fff;
     background-color: hsl(26, 100%, 55%);
+
+    &:hover {
+      background-color: hsla(26, 100%, 55%, 70%);
+    }
   }
 }
 
