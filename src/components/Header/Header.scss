@@ -176,7 +176,7 @@ header {
           }
 
           &:nth-child(2) {
-            opacity: 100%;
+            filter: opacity(100%);
             transition: all 200ms;
           }
 
@@ -267,7 +267,7 @@ header {
             }
 
             &:nth-child(2) {
-              opacity: 0;
+              filter: opacity(0%);
               transition: all 200ms;
             }
 
