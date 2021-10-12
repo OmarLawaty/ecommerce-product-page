@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 
 import { Slider, Cart, Header, ProductInfo } from './components/Index';
-import './App.scss';
 
 const App = () => {
   const [payments, setPayments] = useState([]),
