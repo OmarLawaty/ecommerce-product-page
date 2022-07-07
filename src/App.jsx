@@ -56,6 +56,7 @@ const App = () => {
         px={['0', null, '16']}
         py={['0', null, '20']}
         gap={[null, null, '12', '20']}
+        mb="24"
       >
         <Routes>
           <Route path="*" element={<Navigate to={`/products/${product.id}`} />} />
