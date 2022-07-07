@@ -4,7 +4,7 @@
 
 This is a solution to the [E-commerce product page](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6/hub/ecommerce-product-page-QSFQ3qkvC). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-- [Solution URL](https://www.frontendmentor.io/solutions/calc-app-Vp4t2S-Yt)
+- [Solution URL](https://www.frontendmentor.io/solutions/ecommerce-product-page-uP_V8a_yD)
 - [Live Site URL](https://ecommerce-product-page-omarlawaty.vercel.app/)
 
 ## Table of contents

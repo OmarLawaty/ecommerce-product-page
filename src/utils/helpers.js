@@ -1,16 +1,7 @@
-// Change any number to dollar format
-export const toDollar = num =>
+export const getDiscount = (price, discount) => ((100 - discount) / 100) * price;
+
+export const formatCurrency = number =>
   new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2
-  }).format(num);
-
-export const noSlider = checkFor => {
-  checkFor
-    ? document.body.classList.add('no-slider')
-    : document.body.classList.remove('no-slider');
-};
-
-export const delItemFromArr = (arr, itemIndex) =>
-  arr.filter((item, index) => itemIndex !== index);
+  }).format(number);
