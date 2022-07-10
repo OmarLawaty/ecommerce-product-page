@@ -74,7 +74,7 @@ export const ProductFullScreenPreview = ({ productImages, setFullScreenPreview, 
           </Box>
 
           <Box overflow="hidden" rounded="2xl">
-            <Image src={productImages[activeImage].image} alt="" />
+            <Image src={productImages[activeImage][0]} alt="" />
           </Box>
 
           <Box
@@ -101,7 +101,7 @@ export const ProductFullScreenPreview = ({ productImages, setFullScreenPreview, 
           </Box>
         </Box>
 
-        <Flex px="3.25rem" gap="6">
+        <Flex px="3.25rem" gap="6" w="full" justifyContent="center">
           {productImages.map((img, index) => (
             <Box
               onClick={() => setActiveImage(index)}
@@ -128,7 +128,7 @@ export const ProductFullScreenPreview = ({ productImages, setFullScreenPreview, 
                 border: '2px solid hsl(26, 100%, 55%)'
               }}
             >
-              <Image src={img.thumbnail} alt="" />
+              <Image src={img[1]} alt="" />
             </Box>
           ))}
         </Flex>

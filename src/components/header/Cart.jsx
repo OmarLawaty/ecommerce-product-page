@@ -3,6 +3,7 @@ import { Box, Text, Image, Heading, Flex, Grid, Button } from '@chakra-ui/react'
 
 import { formatCurrency, getDiscount } from '../../utils/helpers';
 import { cartIcon, deleteIcon } from './assets';
+import { Link } from 'react-router-dom';
 
 export const Cart = ({ cart, setCartItem }) => {
   const [isOpened, setIsOpened] = useState(false);
@@ -110,11 +111,18 @@ export const Cart = ({ cart, setCartItem }) => {
 
 const CartItem = ({ cart, setCartItem }) =>
   cart.map(cartItem => {
-    const productThumbnail = require(`../../utils/products/assets/${cartItem.id}`).firstImageThumbnail;
+    const productThumbnail = require(`../../utils/products/assets/${cartItem.id}`).images[0][0];
 
     return (
       <Flex key={cartItem.id} alignItems="center" justifyContent="space-between" px="6" pt="6">
-        <Grid templateColumns="50px auto" templateRows="auto" gap="0.4rem 1rem" color="blue.800">
+        <Grid
+          as={Link}
+          to={`/products/${cartItem.id}`}
+          templateColumns="50px auto"
+          templateRows="auto"
+          gap="0.4rem 1rem"
+          color="blue.800"
+        >
           <Box gridRow="1/4" rounded="lg" h="min-content" overflow="hidden">
             <img src={productThumbnail} alt="" />
           </Box>

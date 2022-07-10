@@ -9,26 +9,7 @@ export const ProductPreview = ({ product }) => {
 
   const [activeImage, setActiveImage] = useState(0);
 
-  const productImages = require(`../../utils/products/assets/${product.id}`);
-
-  const productPreviewImages = [
-    {
-      image: productImages.firstImage,
-      thumbnail: productImages.firstImageThumbnail
-    },
-    {
-      image: productImages.secondImage,
-      thumbnail: productImages.secondImageThumbnail
-    },
-    {
-      image: productImages.thirdImage,
-      thumbnail: productImages.thirdImageThumbnail
-    },
-    {
-      image: productImages.fourthImage,
-      thumbnail: productImages.fourthImageThumbnail
-    }
-  ];
+  const productPreviewImages = require(`../../utils/products/assets/${product.id}/index.js`).images;
 
   const activeImageHandler = amount => {
     if (activeImage + amount < 0) return setActiveImage(productPreviewImages.length - 1);
@@ -74,7 +55,7 @@ export const ProductPreview = ({ product }) => {
         </Box>
 
         <Image
-          src={productPreviewImages[activeImage].image}
+          src={productPreviewImages[activeImage][0]}
           alt=""
           objectFit={['cover', null, 'unset']}
           h={['full', null, 'inherit']}
@@ -104,7 +85,7 @@ export const ProductPreview = ({ product }) => {
         </Box>
       </Box>
 
-      <Flex gap="6" display={['none', null, 'flex']}>
+      <Flex gap="6" display={['none', null, 'flex']} justifyContent="center">
         {productPreviewImages.map((img, index) => (
           <Box
             onClick={() => setActiveImage(index)}
@@ -131,7 +112,7 @@ export const ProductPreview = ({ product }) => {
               border: '2px solid hsl(26, 100%, 55%)'
             }}
           >
-            <Image src={img.thumbnail} alt="" />
+            <Image src={img[1]} alt="" />
           </Box>
         ))}
       </Flex>
