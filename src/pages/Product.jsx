@@ -11,8 +11,6 @@ export const Product = ({ cart, setCartItem }) => {
   const setProduct = () => {
     const product = products.filter(product => product.id.toString() === productId);
 
-    console.log(product);
-
     if (product.length) return product[0];
 
     history.push('/products/notfound');
